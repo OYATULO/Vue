@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3</title>
+    <style>
+        .box{
+                width: 200px;
+                padding: 40px;
+                margin: 10px;
+                display: inline-block;
+                background: grey;
+                text-align: center;
+        }
+        .box:last-child{
+            cursor: zoom-in;
+        }
+        table {
+            width: 100%;
+            background: rgb(193, 193, 193);
+            padding: 20px;
+            text-align: center;
+        }
+        .isfav{
+            background-color: red;
+            color: white;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+     <div id="app">
+        {{message}}
+            <!-- <a v-bind:href="url">okkkk</a>
+            
+            <div v-if="show">
+                <table>
+                    <thead>
+                        <th>#</th>
+                        <th>title</th>
+                        <th>author</th>
+                        <th>IMG</th>
+                    </thead>
+                    <tbody>
+                            <tr v-for="(item,index) in filterbook" :class="{isfav:item.isfav }" @click="isclick(item)">  
+                                <td>{{ index+=1}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.author}}</td>
+                                <td><img :src="item.img" :alt="item.title" srcset=""></td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+
+            <button v-on:click="showhide">
+                    <span v-if="show">hide book</span>
+                    <span v-else="show">show book</span>
+            </button>
+             <button @click="date++">inc </button>
+             <button @click="date--">dec </button>
+            
+             <button ondblclick=""></button> -->
+            
+     </div>
+<!-- <script src="./main.js" type="module"></script> -->
+     <script src="vue3_2_36.js"></script>
+     <script src="./main.js" type="module"></script>
+     <!-- <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    url:"https://ucar.tj",
+                    books:[
+                        { title:"herous", author:"jon doue",date: "2022",img:"1.png",isfav:true},
+                        { title:"Big bon", author:"jon doue",date: "2022",img:"2.png",isfav:true},
+                        { title:"I am", author:"jon doue",date: "2022",img:"3.png",isfav:true}
+                    ],
+                    x:0,
+                    y:0,
+                    show:true
+                }
+            },
+            methods:{
+                showhide(){
+                    this.show=!this.show
+                },
+                isclick(item){
+                    item.isfav=!item.isfav
+                }
+            }, 
+           computed:{
+            filterbook(){
+                return this.books.filter((item)=>item.isfav)
+            }
+           }
+        });
+        app.mount("#app");
+     </script> -->
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE</title>
+    <style>
+        .txt-red{
+            color: red;
+        }
+        .txt-green{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        <input type="text" v-model="message">
+        <input type="text" v-bind:value="message" v-on:input="message=$event.target.value">
+        {{message}}
+        <br>
+        
+        <label for="">login Form</label><br>
+        <input v-model="loginform.username" type="text" />
+        <input v-model="loginform.password" type="text" />
+        <button v-on:click="submitForm">ok</button>
+         
+         <p>{{listinfor}}</p>
+         <p>
+            <button v-on:click="show=!show">tooglse</button>
+        <span v-if="show">BOn</span>
+        <span v-show="show">BOn</span>
+         </p>
+         <p>
+            <button v-on:click="{{user={name:{s:'j'}}">users</button>
+        <span v-if="user">
+            {{user.name.s}}
+        </span>
+         </p>
+            <div v-for="(item, index) in list"  v-if="show">
+                <span-component v-bind:item="item"  v-bind:index="index" v-on:shout="log"></span-component>
+            </div>
+        
+    </div>
+    
+        <script src="vue.js"></script>
+    <script>
+
+        Vue.component('span-component',{
+            props:['item','index'],
+            created() {
+                console.log("Component created");
+            },
+            
+            beforeDestroy() {
+                console.log("Component destroyed");
+            },
+            
+            methods:{
+                    shout(v){
+                        this.$emit('shout', {value:v});
+                    }
+            },
+            template:"<span v-on:click=\"shout(index)\" v-bind:class=\"{'txt-red':item.color==='red','txt-green':item.color==='green'}\"> {{index+1}} {{item.name}}</span>"
+        });
+
+        var app= new Vue({
+            el:"#main",
+            data:{
+                message:"hello34",
+                loginform:{
+                    username:"",
+                    password:""
+                },
+                list:[
+                    {name: "andrei", color: "red" },
+                    {name: "andrei", color: "green" },
+                    {name: "andrei", color: "red" }
+                ],
+                show:true,
+                user:null
+            },
+            created(){
+                console.log("Main created");
+            },
+            mounted() {
+                console.log("main Mounted");  
+            },
+            methods: {
+                submitForm(){
+                    console.log(this.loginform);
+                    
+                    var callog= ()=>{
+                        this.log("ok");
+                    }
+                    callog();
+                },
+                log(v){
+                 var  {value}=v;
+                    console.log(v.value);
+                }
+            },
+            computed: {
+                loginInfo:function(){
+                    return this.loginform.username+" "+this.loginform.password;
+                },
+                
+            },
+         
+        });
+
+    </script>
+
+</body>
+</html>
